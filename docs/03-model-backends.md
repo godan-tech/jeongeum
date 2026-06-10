@@ -4,14 +4,14 @@ Set `MODEL_BACKEND` in `.env` to select the AI provider. Each agent can use a di
 
 ## Comparison
 
-| | Anthropic SDK | Claude CLI | Ollama |
-|---|---|---|---|
-| **Cost** | Pay per token | Included in subscription | Free (hardware cost) |
-| **Setup** | API key only | CLI install + OAuth | Local model install |
-| **Best for** | Production, teams | Personal use | Privacy, offline |
-| **Speed** | Fast | Medium | Depends on hardware |
-| **Policy** | ✅ Approved for automation | ⚠️ Gray area for bots | ✅ No restrictions |
-| **Model quality** | Claude Sonnet/Haiku | Claude (subscription tier) | Varies by model |
+| | Anthropic SDK | Ollama |
+|---|---|---|
+| **Cost** | Pay per token | Free (hardware cost) |
+| **Setup** | API key only | Local model install |
+| **Best for** | Production, teams | Privacy, offline, zero API cost |
+| **Speed** | Fast | Depends on hardware |
+| **Policy** | ✅ Approved for automation | ✅ No restrictions |
+| **Model quality** | Claude Sonnet/Haiku | Varies by model |
 
 ---
 
@@ -29,16 +29,18 @@ Prompt caching is enabled automatically. The stable chip prompt is marked with `
 
 ---
 
-## Claude CLI
+## Claude CLI (Not Recommended)
+
+> ⚠️ **Terms of Service Warning**
+>
+> Claude CLI (Claude Code) is designed for individual interactive developer use. Running it as a subprocess to serve multiple Discord users through one subscription account likely violates Anthropic's Terms of Service — specifically the prohibition on automated access and account sharing.
+>
+> **Do not use this backend for any shared or public deployment.** For bots and automation, use the Anthropic SDK instead. If you choose to use it for private single-user experimentation, review [Anthropic's usage policies](https://www.anthropic.com/legal/aup) first.
 
 ```env
 MODEL_BACKEND=claude-cli
 CLAUDE_BIN=/path/to/claude   # find it: which claude
 ```
-
-Uses your existing Claude subscription via OAuth. No API costs beyond the subscription.
-
-**Policy note:** Anthropic's terms are written for interactive use. Running Claude CLI in an automated bot is a gray area. Suitable for personal projects and experimentation. For anything shared or production, use the SDK.
 
 `CLAUDE_BIN_DIR` can be set instead of `CLAUDE_BIN` if you want to specify just the directory.
 
