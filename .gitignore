@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+shared_context.json
+shared_context.json.lock
+shared_context.json.tmp
+*.log
+*.plist
+chips/*/MEMORY.md
