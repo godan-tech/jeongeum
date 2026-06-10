@@ -187,6 +187,8 @@ Do NOT append for routine Q&A or already-recorded items.""")
 
         if backend == "anthropic-sdk":
             return await _run_via_sdk(prompt, system)
+        elif backend == "gemini":
+            return await _run_via_gemini(prompt, system)
         elif backend == "ollama":
             return await _run_via_ollama(prompt, system, env)
         else:
@@ -239,6 +241,24 @@ Do NOT append for routine Q&A or already-recorded items.""")
             return resp.content[0].text
         except Exception as e:
             return f"SDK error: {e}"
+
+    async def _run_via_gemini(prompt: str, system: str) -> str:
+        """Gemini API — free tier available, approved for automation."""
+        try:
+            import aiohttp
+            api_key = os.environ.get("GEMINI_API_KEY", "")
+            model = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash")
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+            payload = {
+                "system_instruction": {"parts": [{"text": system}]},
+                "contents": [{"parts": [{"text": prompt}]}],
+            }
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, json=payload, timeout=aiohttp.ClientTimeout(total=120)) as resp:
+                    data = await resp.json()
+                    return data["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as e:
+            return f"Gemini error: {e}"
 
     async def _run_via_ollama(prompt: str, system: str, env: dict) -> str:
         """Tier 3: Ollama local model (requires ollama running locally)."""

@@ -4,14 +4,14 @@ Set `MODEL_BACKEND` in `.env` to select the AI provider. Each agent can use a di
 
 ## Comparison
 
-| | Anthropic SDK | Ollama |
-|---|---|---|
-| **Cost** | Pay per token | Free (hardware cost) |
-| **Setup** | API key only | Local model install |
-| **Best for** | Production, teams | Privacy, offline, zero API cost |
-| **Speed** | Fast | Depends on hardware |
-| **Policy** | ✅ Approved for automation | ✅ No restrictions |
-| **Model quality** | Claude Sonnet/Haiku | Varies by model |
+| | Anthropic SDK | Gemini API | Ollama |
+|---|---|---|---|
+| **Cost** | Pay per token | Free tier available | Free (hardware cost) |
+| **Setup** | API key | Free API key | Local model install |
+| **Best for** | Production, Claude quality | Free legitimate automation | Privacy, offline |
+| **Speed** | Fast | Fast | Depends on hardware |
+| **Policy** | ✅ Approved | ✅ Approved | ✅ No restrictions |
+| **Free tier** | ❌ | ✅ Rate-limited | ✅ Unlimited (local) |
 
 ---
 
@@ -26,6 +26,28 @@ ANTHROPIC_API_KEY=sk-ant-...
 Prompt caching is enabled automatically. The stable chip prompt is marked with `cache_control: ephemeral`, reducing cost on repeated requests by ~90%.
 
 [Get an API key →](https://console.anthropic.com)
+
+---
+
+## Gemini API
+
+The only **legitimately free API tier** that's officially approved for bot automation.
+
+```env
+MODEL_BACKEND=gemini
+GEMINI_API_KEY=AIza...
+GEMINI_MODEL=gemini-1.5-flash   # or gemini-1.5-pro for higher quality
+```
+
+Get a free API key at [aistudio.google.com](https://aistudio.google.com). No credit card required.
+
+**Free tier limits (as of 2026):**
+- Gemini 1.5 Flash: 15 requests/minute, 1 million tokens/day
+- Gemini 1.5 Pro: 2 requests/minute, 50 requests/day
+
+For most personal Discord servers this is sufficient. For high-traffic servers, the paid tier is available.
+
+> Note: Unlike Claude subscriptions, Gemini API access is a separate product from Gemini Advanced. A free API key from AI Studio does not require a Google One subscription.
 
 ---
 

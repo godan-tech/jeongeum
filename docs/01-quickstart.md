@@ -4,7 +4,7 @@
 
 - Python 3.10+
 - A Discord account with Developer Portal access
-- One of: Anthropic API key, Claude CLI installed, or Ollama running locally
+- One of: Anthropic API key, Gemini API key (free tier), or Ollama running locally
 
 ---
 
@@ -41,9 +41,21 @@ Best for production use. Pay-per-token, no hardware requirements.
    ANTHROPIC_API_KEY=sk-ant-...
    ```
 
-### Option B: Ollama (Free, Local)
+### Option B: Gemini API (Free Tier)
 
-No API costs. Requires a machine with 8GB+ VRAM (or 16GB+ unified memory for Apple Silicon).
+Legitimately free for automation. Google AI Studio provides a free API tier with rate limits suitable for personal/small-team bots.
+
+1. Get a free API key at [aistudio.google.com](https://aistudio.google.com)
+2. Add to `.env`:
+   ```
+   MODEL_BACKEND=gemini
+   GEMINI_API_KEY=AIza...
+   GEMINI_MODEL=gemini-1.5-flash
+   ```
+
+### Option C: Ollama (Free, Local)
+
+No API costs, no rate limits. Requires a machine with 8GB+ VRAM (or 16GB+ unified memory for Apple Silicon).
 
 1. Install Ollama: [ollama.com](https://ollama.com)
 2. Pull a model:
@@ -55,18 +67,6 @@ No API costs. Requires a machine with 8GB+ VRAM (or 16GB+ unified memory for App
    MODEL_BACKEND=ollama
    OLLAMA_HOST=http://localhost:11434
    OLLAMA_MODEL=llama3
-   ```
-
-### Option C: Claude CLI
-
-For personal use if you have an active Claude subscription (Pro or Max). See [policy note](../README.md#model-backends) before using this in production.
-
-1. Install Claude CLI: [docs.anthropic.com/en/docs/claude-code](https://docs.anthropic.com/en/docs/claude-code)
-2. Run `claude` once to authenticate via OAuth
-3. Add to `.env`:
-   ```
-   MODEL_BACKEND=claude-cli
-   CLAUDE_BIN=/path/to/claude   # find it: which claude
    ```
 
 ---
