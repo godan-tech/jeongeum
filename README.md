@@ -1,6 +1,8 @@
-# Agent Brain Chip
+# Jeongeum (정음)
 
 > Run multiple specialized AI agents inside Discord — each with a persistent, markdown-only brain.
+
+Named after 훈민정음 (Hunminjeongeum) — the writing system Sejong the Great created so *anyone* could express *any* thought. Jeongeum does the same for AI agents: any persona, any expertise, expressed through four markdown files.
 
 ```
 Discord message
@@ -19,7 +21,7 @@ Response to Discord channel
 
 Every AI session starts from scratch. You repeat your business context, tone guidelines, and past decisions on every new conversation — a silent productivity tax called the **Cold Start Problem**.
 
-Agent Brain Chip solves this with a two-file brain per agent:
+Jeongeum solves this with a four-file brain per agent:
 
 | File | Role |
 |------|------|
@@ -41,7 +43,7 @@ Update the brain by editing markdown. No Python changes needed.
 
 ## Comparison
 
-| | CrewAI / LangChain | llmcord | **Agent Brain Chip** |
+| | CrewAI / LangChain | llmcord | **Jeongeum** |
 |---|---|---|---|
 | Brain update method | Python code | hardcoded | ✅ Markdown only |
 | Multi-agent same server | ✅ | ❌ | ✅ |
@@ -53,8 +55,8 @@ Update the brain by editing markdown. No Python changes needed.
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/yourusername/agent-brain-chip
-cd agent-brain-chip
+git clone https://github.com/yourusername/jeongeum
+cd jeongeum
 pip install -r requirements.txt
 
 # 2. Configure

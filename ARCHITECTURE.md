@@ -117,7 +117,7 @@ agent-brain-chip/
 ## Design Decisions
 
 **Why not LangChain or CrewAI?**
-Those frameworks are powerful for complex pipelines but require significant Python to configure personality. Agent Brain Chip optimizes for a different goal: make persona as easy to change as a text file, and make the engine invisible.
+Those frameworks are powerful for complex pipelines but require significant Python to configure personality. Jeongeum optimizes for a different goal: make persona as easy to change as a text file, and make the engine invisible.
 
 **Why Discord slash commands instead of message commands?**
 Slash commands give built-in command documentation, argument validation, and avoid the need to mention the bot. The `defer()` pattern solves the 3-second acknowledgment requirement.
